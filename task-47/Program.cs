@@ -40,7 +40,7 @@ double[,] FillDoubleRandom(int rows, int columns, int min, int max)
     return result;
 }
 
-void PrintArray(double[,] tmpArray)
+void PrintArrayDouble(double[,] tmpArray)
 {
     
     for (int i = 0; i< tmpArray.GetLength(0); i++)
@@ -62,7 +62,7 @@ void Main()
     int max = ReadInt("Максимальное число в массиве:");
 
     double[,] myArray = FillDoubleRandom(m, n, min, max);
-    PrintArray(myArray);
+    PrintArrayDouble(myArray);
 
 }
 
