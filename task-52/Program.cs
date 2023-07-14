@@ -9,9 +9,31 @@
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
 
-int[,] FillArrayRandom(int rows, int columns, int min, int max)
+void PrintArrayDouble(double[] tmpArray)
 {
-    int[,] result = new int[rows, columns];
+    
+    for (int i = 0; i< tmpArray.GetLength(0); i++)
+    {
+        Console.Write($"{tmpArray[i]} ");
+    }  
+}
+
+void PrintArrayDouble2(double[,] tmpArray)
+{
+    
+    for (int i = 0; i< tmpArray.GetLength(0); i++)
+    {
+        for (int j = 0; j < tmpArray.GetLength(1); j++)
+        {
+            Console.Write($"{tmpArray[i, j]} ");
+        }
+        Console.WriteLine();
+    }  
+}
+
+double[,] FillDoubleRandom(int rows, int columns, int min, int max)
+{
+    double[,] result = new double[rows, columns];
     Random rnd = new Random();
     for (int i = 0; i < rows; i++)
     {
@@ -23,52 +45,29 @@ int[,] FillArrayRandom(int rows, int columns, int min, int max)
     return result;
 }
 
-void PrintArrayDouble(double[,] tmpArray)
-{
-    
-    for (int i = 0; i< tmpArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < tmpArray.GetLength(1); j++)
-        {
-            Console.Write($"{tmpArray[i, j]} ");
-        }
-        Console.WriteLine();
-    }  
-}
-
-void PrintArray(int[,] tmpArray)
-{
-    
-    for (int i = 0; i< tmpArray.GetLength(0); i++)
-    {
-        for (int j = 0; j < tmpArray.GetLength(1); j++)
-        {
-            Console.Write($"{tmpArray[i, j]} ");
-        }
-        Console.WriteLine();
-    }  
-}
-
-double[] AvgOfColumns(int[,] tmpArray)
+double[] AvgOfColumns(double[,] tmpArray)
 {
     double[] result = new double[tmpArray.GetLength(1)];
-    int tmpSum = 0;
+    double tmpSum = 0;
     for (int i = 0; i < tmpArray.GetLength(1); i++)
     {
-        for(int j = 0; j < tmpArray.GetLength(0); j++)
+       tmpSum = 0;
+       for(int j = 0; j < tmpArray.GetLength(0); j++)
         {
             tmpSum += tmpArray[j, i];
         }
-        result[i] = tmpSum/tmpArray.GetLength(0);
+        result[i] = Math.Round(tmpSum/tmpArray.GetLength(0), 1);
     }
     return result;
 }
 
 void Main()
 {
-    int[,] myArray = FillArrayRandom(3, 4, -10, 10);
-    PrintArray(myArray);
-    double[] = AvgOfColumns(myArray);
+    double[,] myArray = FillDoubleRandom(4, 5, 0, 10);
+    PrintArrayDouble2(myArray);
+    double[] avgs = AvgOfColumns(myArray);
+    System.Console.WriteLine();
+    PrintArrayDouble(avgs);
 }
 
 Main();
